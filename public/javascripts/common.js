@@ -1,32 +1,38 @@
-﻿function login(){
-    var username = $('#username').val();
-    var data = { "username": username,
-	             "password":password, };
-    $.ajax({
-        url:'/login',
-        type:'POST',
-        data:data,
-        success: '/index',
-           
-        
-        
-    });
-}        
+﻿// function login(){
+//     var username = $('#username').val();
+// 	var password = $('#password').val();
+//     $.ajax({
+//         url:'/login',
+//         type:'POST',
+//         data:{ "username": username,
+// 		"password":password, },
+//         success: function(data){
+// 			if(data.data==1){
+// 				window.location.href="/index"
+// 			}else{
+// 				window.location.href="/error"
+// 			}
+// 		}
+//     });
+// }        
+
 function loginback(){
-    var usernameBack = $('#username').val();
-    var databack = { "usernameBack": usernameBack,
-	             "passwordBack":passwordBack, };
+    var AccountBack = $('#username').val();
+	var passwordBack = $('#password').val();
+    var databack = { "AccountBack": AccountBack,
+	             "passwordBack":passwordBack};
     $.ajax({
-        url:'/loginback',
+        url:'/loginback.html',
         type:'POST',
         data:databack,
-        success: '/indexBack',
-           
-        
+        success: function(data){
+			if(data.data == 1){
+				window.location = "/indexback.html"
+			}
+		},
         
     });
 }    
-
 
 // 表单验证
 $(document).ready(function(){
@@ -67,6 +73,7 @@ $(document).ready(function(){
 				required:true,//必填
 				minlength:3, //最少6个字符
 				maxlength:32,//最多20个字符
+				
 			
 			},
 			password:{
@@ -95,6 +102,7 @@ $(document).ready(function(){
 				required:"必须填写用户名",
 				minlength:"用户名至少为3个字符",
 				maxlength:"用户名至多为16个字符",
+				remote: "用户名已存在",
 				
 			},
 			password:{

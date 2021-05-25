@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('login');
   // next();
 });
+
 router.post('/',function(req,res){
    let username=req.body.username;
    let password=req.body.password;
@@ -24,10 +25,10 @@ router.post('/',function(req,res){
    
   connection.connect();
   var secherSql='select * from tab_user where user_name=';
-  var passSql='select * from tab_user where password =';
+  var passSql='and password =';
   var nameQuer=connection.escape(username);
-  var passQuer=connection.escape(password)
-  connection.query(secherSql+nameQuer&&passSql+passQuer, (error, results, fields)=> {
+  var passQuer=connection.escape(password);
+  connection.query(secherSql+nameQuer+passSql+passQuer, (error, results, fields)=> {
     if (error) throw error;
     console.log(results);
     

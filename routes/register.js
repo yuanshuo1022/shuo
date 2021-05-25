@@ -3,7 +3,7 @@ var router = express.Router();
 var mysql =require('mysql');
 const crypto = require('crypto');
 const md5 = crypto.createHash('md5');
-let User=require('./bean/user');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -37,7 +37,7 @@ router.post('/', function(req, res, next) {
      return;//如果失败了就直接return不会继续下面的代码
     }else{
     res.redirect('login')//如果注册成功就给客户端返回1
-    console.log("OK");
+    // console.log("OK");
   }
 });
 console.log(user);
