@@ -7,6 +7,7 @@ var ejs    = require('ejs');
 var session=require('express-session');
 const crypto = require('crypto');
 const md5 = crypto.createHash('md5');
+ 
 // var jsdom = require('jsdom');
 // const {JSDOM} = jsdom;
 // const {document} = (new JSDOM('<!doctype html><html><body></body></html>')).window;
@@ -21,6 +22,7 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var registerRouter=require('./routes/register');
 var backRouter=require('./routes/back');
+var pictureRouter=require('./routes/picture')
 
 var app = express();
 
@@ -50,7 +52,7 @@ app.use('/login',loginRouter);
 app.use('/register',registerRouter);
 // app.use('/home',homeRouter);
 app.use('/',backRouter);
-
+app.use('/',pictureRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -65,7 +67,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-
+  // console.log(err);
  
  
 });

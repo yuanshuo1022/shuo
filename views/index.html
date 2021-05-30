@@ -111,16 +111,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<section class="slider">
 							<div class="flexslider">
 								<ul class="slides">
-									<% list.forEach((o,i) =>{ %>
+									<% for(var i=0;i<3;i++){ %>
 									<li>
 										<div class="banner-bottom-text">
 									
-											<h3><%=o.title%></h3>
+											<h3><%=datas[i].title%></h3>
 
 										</div>
-									</li></ul>>
-									<%})%>
-		
+									</li>
+									<%}%>
+								</ul>
 							</div>
 							<div class="clearfix"> </div>
 						</section>
@@ -144,46 +144,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span>我们</span>
 				</h3>
 				<div class="banner_bottom_right_grids">
-					<% list.forEach((j,i) =>{ %>
+					<% for(var i=0;i<3;i++){ %>
 					<div class="col-md-4 banner_bottom_right_grid">
 						<div class="view view-tenth ab1">
 							<div class="w3-agile_text_box">
 								<span class="fa fa-bullhorn" aria-hidden="true"></span>
-								<h3><%=j.event_name%></h3>
-								<p class="paragraph-w3l"><%=j.event_massge%></p>
+								<h3><%=datas[i].event_title%></h3>
+								<p class="paragraph-w3l"><%=datas[i].event_massage%></p>
 							</div>
 							<div class="mask">
-								<img src=<%=j.event_img%> class="img-responsive" alt="">
+								<img src=<%=datas[i].indicator_img%> class="img-responsive" alt="">
 							</div>
 						</div>
-					</div><%})%>
-		
-				
+					</div><%}%>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
+		
+				
+				
 		<!-- about-bottom-->
 		<div class="services-inner-agileits-w3layouts">
 			<div class="container">
 				<div class="col-md-8">
 					<ul id="flexiselDemo1">
-						<% list.forEach((k,i) =>{ %>
+						<% for(var i=0;i<3;i++){ %>
 						<li>	
 							<div class="laptop">
 								<div class="img-box">
-									<img class="img-responsive zoom-img" src=<%=k.event_img%> alt=" " />
+									<img class="img-responsive zoom-img" src=<%=datas[i].view_img%> alt=" " />
 								</div>
 								<div class="flex-info ">
-									<h4><%=k.event_count%>
-										<span><%=k.event_name%></span>
+									<h4><%=datas[i].event_cource%>
+										<span><%=datas[i].event_title%></span>
 									</h4>
-									<p><%=k.event_massge%></p>
+									<p><%=datas[i].event_massage%></p>
 								</div>
 							</div>
 
-						</li><%})%>
+						</li><%}%></ul></div>
 		
 		
 				<div class="col-md-4 content-pro-head">
@@ -221,7 +222,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- title-with-image -->
 		<div class="title-img white-img">
 			<div class="container">
-				<h3 class="bold-title black-title">Our Team</h3>
+				<h3 class="bold-title black-title">我们的团队</h3>
 			</div>
 		</div>
 		<!--// title-with-image -->
@@ -360,17 +361,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 			<div class="gallery-grids-row">
-				<% list.forEach((x,i) =>{ %>
+				<% for(var i=0;i<8;i++){ %>
 				<div class="col-md-3 gallery-grid">
 					<div class="wpf-demo-4">
-						<a href=<%=x.view_img%> class="jzBoxLink item-hover" title="Lorem ipsum dolor sit amet.">
-							<img src=<%=x.view_img%> alt=" " class="img-responsive" />
+						<a href=<%=datas[i].view_img%> class="jzBoxLink item-hover" title="我们的演出.">
+							<img src=<%=datas[i].view_img%> alt=" " class="img-responsive" />
 							<div class="view-caption">
-								<p>Full View</p>
+								<p>放大</p>
 							</div>
 						</a>
 					</div>
-				</div><%})%>
+				</div><%}%>
 		
 			
 
@@ -388,11 +389,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="carousel slide" data-ride="carousel" id="quote-carousel">
 					<!-- Bottom Carousel Indicators -->
 					<ol class="carousel-indicators">
-						<% list.forEach((s,i) =>{ %>s
+						<% for(var i=0;i<3;i++){ %>
 
 						<li data-target="#quote-carousel" data-slide-to="0" class="active">
-							<img class="img-responsive " src=<%=s.indicator_img%> alt="">
-						</li><%})%>
+							<img class="img-responsive " src=<%=datas[i].indicator_img%> alt="">
+						</li>
+						<%}%>
 		
 					</ol>
 
@@ -401,18 +403,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- Quote 1 -->
 						<div class="item active">
 							
-							<% list.forEach((x,i) =>{ %>
+							<% for(var j=0;j<3;j++){ %>
 								<blockquote>
 								<div class="row">
 									<div class="col-sm-8 col-sm-offset-2 client-agileits-w3layouts-w3layouts">
 
-										<p class="paragraph-w3l"><%=x.indicator_mass%></p>
-										<h5><%=x.indicator_name%>></h5>
+										<p class="paragraph-w3l"><%=datas[j].indicator_mass%></p>
+										<h5><%=datas[j].indicator_name%>></h5>
 									</div>
 								</div>
 							</blockquote>
-							<div class="item"><%})%>
 						</div>
+							<div class="item"><%}%>
+							</div>
+						
 					
 					<!-- Carousel Buttons Next/Prev -->
 					<a data-slide="prev" href="#quote-carousel" class="left carousel-control">
@@ -435,7 +439,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //map -->
 	<!-- /contact -->
 	<div class="copy">
-		<p>© 2018 Stereo . All Rights Reserved | Design by
+		<p>© 2021 Kinjaz . All Rights Reserved | Design by
 			<a href="http://w3layouts.com/">W3layouts</a>
 		</p>
 	</div>

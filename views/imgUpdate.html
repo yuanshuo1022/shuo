@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>kinjaz-Arena</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="http://localhost:3000/stylesheets/style.css" />
+
+<body>
+
+<div class="login-container">
+	<h1>修改图片</h1>
+	
+	
+	<form action="/picture-list.html/imgUpdate" method="post" id="loginForm">
+		<div>
+			<input type="hidden" name="img_id" class="img_id" value="<%= img_data[0].view_id%>" placeholder="id"  />
+		</div>
+		<div>
+			<input type="text" name="img_img" class="img_img" value="<%= img_data[0].view_img%>" placeholder="图片路径"  />
+		</div>
+		<div>
+			<input type="text" name="img_name" class="img_name" value="<%= img_data[0].view_name%>"  placeholder="图片名称"  />
+		</div>
+        <div>
+			<input type="text" name="img_tags" class="img_tags" value="<%= img_data[0].view_tags%>" placeholder="来源"  />
+		</div>
+        <div>
+			<input type="text" name="img_kind" class="img_kind" value="<%= img_data[0].view_kind%>" placeholder="图片种类"  />
+		</div>
+		
+		<button id="submit" type="submit" >提交</button>
+	</form>
+
+<a href="/picture-list.html" >
+	<button type="button" class="register-tis">不想修改了？</button>
+</a>
+
+
+<!-- <script src="javascripts/common.js"></script> -->
+<script src="http://localhost:3000/javascripts/jquery.min.js"></script>
+<script src="http://localhost:3000/javascripts/common.js"></script>
+<!--背景图片自动更换-->
+<script src="http://localhost:3000/javascripts/supersized.3.2.7.min.js"></script>
+<script src="http://localhost:3000/javascripts/supersized-init.js"></script>
+<!--表单验证-->
+<script src="http://localhost:3000/javascripts/jquery.validate.min.js?var1.14.0"></script>
+
+
+
+</body>
+</html>
