@@ -19,11 +19,12 @@ router.get('/', function(req, res, next) {
     }else{
       res.render('index',{datas:rs});
     }
-    console.log(rs);
+ 
   })
 
 });
 router.post('/', function(req, res, next) {
 
 });
+
 module.exports = router;

@@ -8,14 +8,10 @@ var session=require('express-session');
 const crypto = require('crypto');
 const md5 = crypto.createHash('md5');
  
-// var jsdom = require('jsdom');
-// const {JSDOM} = jsdom;
-// const {document} = (new JSDOM('<!doctype html><html><body></body></html>')).window;
-// global.document = document;
-// global.window = document.defaultView;
+
  
 global.jQuery = require('jquery');
-// const $= require('jquery')(require("jsdom").jsdom().defaultView);
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,6 +19,7 @@ var loginRouter = require('./routes/login');
 var registerRouter=require('./routes/register');
 var backRouter=require('./routes/back');
 var pictureRouter=require('./routes/picture')
+var informationRouter=require('./routes/information')
 
 var app = express();
 
@@ -50,9 +47,11 @@ app.use('/index', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);
 app.use('/register',registerRouter);
-// app.use('/home',homeRouter);
+app.use('/',informationRouter);
 app.use('/',backRouter);
 app.use('/',pictureRouter);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

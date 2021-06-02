@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var mysql =require('mysql');
+var sd =require('silly-datetime');
+// const { render } = require('ejs');
+// const { event } = require('jquery');
 const crypto = require('crypto');
-const { render } = require('ejs');
-const { event } = require('jquery');
-const md5 = crypto.createHash('md5');
+const hash = crypto.createHash('md5');
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -43,10 +45,12 @@ router.get('/loginback.html', function(req, res, next) {
 
   //POST
   router.post('/loginback.html',function(req,res){
+    
     let passwordBack=req.body.passwordBack;
     let AccountBack=req.body.AccountBack ;
-    console.log("账号是"+AccountBack);
-    console.log("密码是"+passwordBack);
+    hash.update(passwordBack);
+   passwordBack=hash.digest('hex')
+    
    
    var secherAdminSql='select * from tab_admin where  Admin_account=';
    var passSql='and Admin_password =';
@@ -78,10 +82,10 @@ router.get('/loginback.html', function(req, res, next) {
    var add_title=req.body.add_title;
    var add_kind=req.body.add_kind;
    var add_cource =req.body.add_cource;
-   var add_date  =req.body.add_date;
-  
+   var add_date  =sd.format(new Date(),'YYYY-MM-DD HH:mm')
+   var add_massage=req.body.add_massage
  
- connection.query("insert into tab_event(event_title,event_kind,event_cource,event_date) values(?,?,?,?)",[add_title,add_kind,add_cource,add_date], function (err, rows) {
+ connection.query("insert into tab_event(event_title,event_kind,event_cource,event_date,event_massage) values(?,?,?,?,?)",[add_title,add_kind,add_cource,add_date,add_massage], function (err, rows) {
   if (err) {
       res.end('新增失败：' + err);
   } else {
@@ -137,7 +141,7 @@ router.post('/search', function (req, res) {
  
   
   if(a_id){
-   sql+= " and event_id like'%" + a_id + "%'";
+   sql+= " and event_id =" + a_id + "";
 }
 
   if (a_title) {
