@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta-Tags -->
+	<link href="http://localhost:3000/stylesheets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!--bootstrap-css-->
+	<link href="http://localhost:3000/stylesheets/css/font-awesome.css" rel="stylesheet">
+	<!--font-awesome-css-->
+	<link rel="stylesheet" href="http://localhost:3000/stylesheets/css/flexslider.css" type="text/css" media="screen" />
+	<!--flexslider-css-->
+	<link href="http://localhost:3000/stylesheets/css/styleone.css" rel="stylesheet" type="text/css" media="all" />
+	<!--style-sheet-->
+	<!--fonts-->
+	<link href="//fonts.googleapis.com/css?family=Raleway:200,300,400,600,700,800,900" rel="stylesheet">
+	<!--//fonts-->
+</head>
+<body>
+    <div class="events" id="events" >
+		<div class="container">
+			<h3 class="w3layouts-heading">全部
+				<span>评论</span>
+			</h3>
+    <tbody>
+        <tr> 
+            <% for(var j=0;j<data.length;j++){ %>
+        <td>昵称：<%=data[j].comment_user%> </td>
+        <td>评论时间：<%=data[j].comment_date%><input class="form-control" type="text" value="<%=data[j].comment%>" readonly></td>
+        <%}%>
+        <tr>
+    </tbody>
+    
+                <form action="/comment" method="POST" >
+                    <div class="form-group">
+                        <label for="name">下一次热评就是你</label>
+                    </div><div>
+                        <textarea class="form-control" rows="3" placeholder="写下您的评论...." name="comment"></textarea>
+                    </div>
+                     <!-- <button id="submit" type="submit" onclick="comment()" style="float: right;">评论</button> -->
+                     <button type="submit" class="btn btn-infostyle="float: right;">评论</button>
+                 </form>	
+                ————————————————
+            
+                    " 
+                </div>
+            </div>
+
+    <script type="text/javascript" src="http://localhost:3000/javascripts/js/jquery.flexisel.js"></script>
+<!-- //about-section-flexisel-slider-->
+<script src="http://localhost:3000/javascripts/js/jzBox.js"></script>
+
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="http://localhost:3000/javascripts/js/move-top.js"></script>
+<script type="text/javascript" src="http://localhost:3000/javascripts/js/easing.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<!-- smooth scrolling -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear' 
+            };
+        */
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+    });
+
+</script>
+
+<a href="#home" class="scroll" id="toTop" style="display: block;">
+    <span id="toTopHover" style="opacity: 1;"> </span>
+</a>
+<!-- //smooth scrolling -->
+<script src="http://localhost:3000/javascripts/js/bootstrap.js"></script>
+
+	
+
+</body>
+</html>

@@ -11,7 +11,7 @@
  Target Server Version : 80024
  File Encoding         : 65001
 
- Date: 02/06/2021 19:28:07
+ Date: 05/06/2021 21:52:33
 */
 
 SET NAMES utf8mb4;
@@ -36,6 +36,33 @@ CREATE TABLE `tab_admin`  (
 INSERT INTO `tab_admin` VALUES (1, '943711797', 'yuanshuo', '8398156282e80352503efa05125cb22b', '董事长');
 
 -- ----------------------------
+-- Table structure for tab_comment
+-- ----------------------------
+DROP TABLE IF EXISTS `tab_comment`;
+CREATE TABLE `tab_comment`  (
+  `comment_id` int(0) NOT NULL AUTO_INCREMENT,
+  `comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `comment_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `comment_date` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
+  `comment_typeid` int(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`comment_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tab_comment
+-- ----------------------------
+INSERT INTO `tab_comment` VALUES (1, 'kinjaz yyds', 'ys', '2021-06-03 18:53:43', 1);
+INSERT INTO `tab_comment` VALUES (2, 'kinjaz是我们的信仰', 'ys', '2021-06-03 18:53:44', 1);
+INSERT INTO `tab_comment` VALUES (3, '无论是控制还是爆发，都是一流的', 'hch', '2021-06-03 18:53:55', 2);
+INSERT INTO `tab_comment` VALUES (4, '无论是爆发还是控制，都是一流的水平', 'hch', '2021-06-03 18:53:57', 1);
+INSERT INTO `tab_comment` VALUES (5, 'how you manage musicality, choreography, cinematography, just incredible and such a joy to watch.', 'hch', '2021-06-03 18:54:14', 1);
+INSERT INTO `tab_comment` VALUES (6, '发放', NULL, '2021-06-04 09:48:00', NULL);
+INSERT INTO `tab_comment` VALUES (7, '发放', NULL, '2021-06-04 09:49:00', NULL);
+INSERT INTO `tab_comment` VALUES (8, '6666', NULL, '2021-06-04 09:50:00', NULL);
+INSERT INTO `tab_comment` VALUES (9, '6666666666666666666666666', NULL, '2021-06-04 09:51:00', NULL);
+INSERT INTO `tab_comment` VALUES (10, 'bfbvcbs', NULL, '2021-06-04 09:53:00', NULL);
+
+-- ----------------------------
 -- Table structure for tab_event
 -- ----------------------------
 DROP TABLE IF EXISTS `tab_event`;
@@ -50,7 +77,7 @@ CREATE TABLE `tab_event`  (
   `event_comment` bigint(0) NULL DEFAULT NULL,
   `event_tumb` bigint(0) NULL DEFAULT NULL,
   PRIMARY KEY (`event_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_event
@@ -76,7 +103,7 @@ CREATE TABLE `tab_indicator`  (
   PRIMARY KEY (`indicator_id`) USING BTREE,
   INDEX `viewImg`(`views_id`) USING BTREE,
   CONSTRAINT `viewImg` FOREIGN KEY (`views_id`) REFERENCES `tab_views` (`view_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_indicator
@@ -114,7 +141,7 @@ CREATE TABLE `tab_user`  (
   `user_phoneNO` bigint(0) NOT NULL,
   `user_email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   PRIMARY KEY (`users_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_user
@@ -137,7 +164,7 @@ CREATE TABLE `tab_views`  (
   `view_tags` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `view_kind` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`view_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_views

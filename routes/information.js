@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
  
 connection.connect();
 router.get('/information',function(req,res){
-  connection.query('select event_img,event_title,event_date,event_massage,event_tumb,event_comment from tab_event',function(err,result){
+  connection.query('select * from tab_event LEFT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id union SELECT * from tab_event RIGHT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id ',function(err,result){
     if(err){
      res.send("页面展示失败",err)
     }else{

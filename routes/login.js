@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 const crypto = require('crypto');
-const hash = crypto.createHash('md5');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('login');
@@ -12,10 +12,9 @@ router.get('/', function(req, res, next) {
 router.post('/',function(req,res){
    let username=req.body.username;
    let password=req.body.password;
+   const hash = crypto.createHash('md5');
    hash.update(password);
    password=hash.digest('hex')
-  
- 
    var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
@@ -33,6 +32,8 @@ router.post('/',function(req,res){
     console.log(results);
     
     if(results[0]){
+      req.session.user=username;
+      req.session.password=password;
       res.redirect('/index');
     }else{
       res.redirect('/error');

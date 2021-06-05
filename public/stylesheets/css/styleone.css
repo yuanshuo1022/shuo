@@ -732,7 +732,7 @@ h3.white-title {
 }
 
 .white-img {
-    background: url(../images/team.jpg)no-repeat center;
+    background: url(../images/team.webp)no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -ms-background-size: cover;
@@ -1332,7 +1332,7 @@ li.nbs-flexisel-item img {
 /*-- team --*/
 
 .team {
-    background: #000;
+    background: #fff
 }
 
 .agileits-w3layouts-team-grids {
@@ -1474,7 +1474,7 @@ li.nbs-flexisel-item img {
 }
 
 .wpf-demo-4 {
-    background-color: #e00231;
+    background-color: #398b7a;
     display: block;
     overflow: hidden;
     position: relative;
@@ -1492,7 +1492,8 @@ li.nbs-flexisel-item img {
 }
 
 .wpf-demo-4 img {
-    width: 100%;
+    height: 237px;
+    width: 300px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -ms-transition: all 0.5s;
