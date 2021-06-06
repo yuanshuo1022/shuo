@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
  
 connection.connect();
 router.get('/', function (req, res) {
-  connection.query('select * from tab_event LEFT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id union SELECT * from tab_event RIGHT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id ',function(err,result){
+  connection.query('select * from tab_event LEFT JOIN tab_comment on tab_event.event_id=tab_comment.comment_typeid union SELECT * from tab_event RIGHT JOIN tab_comment on tab_event.event_id=tab_comment.comment_typeid ',function(err,result){
     if(err){
      res.send("页面展示失败",err)
     }else{
@@ -21,25 +21,25 @@ router.get('/', function (req, res) {
     }
   })
 });
+
 router.get('/:id',function(req,res){
-   connection.query("select * from tab_comment where comment_typeid ="+req.params.id,function(err,result){
+   connection.query("select * from tab_event LEFT JOIN tab_comment on tab_event.event_id=tab_comment.comment_typeid where tab_event.event_id = "+req.params.id+" union SELECT * from tab_event RIGHT JOIN tab_comment on tab_event.event_id=tab_comment.comment_typeid  where  tab_event.event_id = "+req.params.id+"",function(err,result){
     if (err) {
       res.end('获取评论失败：' + err);
   } else {
     res.render('comment',{data:result});
   }
    })
-});
-router.post('/:id',function(req,res){
+  });
+router.post('/',function(req,res){
   var comment=req.body.comment
   var c_date=sd.format(new Date(),'YYYY-MM-DD HH:mm');
-  console.log("评论为"+comment);
-  console.log("id为"+req.params.id)
-    connection.query("insert into tab_comment(comment_typeid,comment,comment_date) values(?,?,?)",[req.params.id,comment,c_date],function(err,result){
+var comm_id=req.body.comm_id
+    connection.query("insert into tab_comment(comment_typeid,comment,comment_date) values(?,?,?)",[comm_id,comment,c_date],function(err,result){
       if (err) {
         res.end('评论失败：' + err);
     } else {
-        res.redirect('/comment');
+        res.redirect("/comment/"+comm_id);
         console.log(result)
     }
     })

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql =require('mysql');
 const crypto = require('crypto');
-const md5 = crypto.createHash('md5');
+
 
 
 /* GET home page. */
@@ -16,6 +16,7 @@ router.post('/', function(req, res, next) {
     req.body.confirm_password,
     req.body.phone_number,
     req.body.email);
+    const md5 = crypto.createHash('md5');
   var  addSql = 'INSERT INTO tab_user(user_name,password,user_phoneNO,user_email) VALUES(?,?,?,?)';
   var addSqlParams=[req.body.username,
  password = md5.update(req.body.password).digest('hex'),

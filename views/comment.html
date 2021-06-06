@@ -38,14 +38,19 @@
             <% for(var j=0;j<data.length;j++){ %>
         <td>昵称：<%=data[j].comment_user%> </td>
         <td>评论时间：<%=data[j].comment_date%><input class="form-control" type="text" value="<%=data[j].comment%>" readonly></td>
-        <%}%>
+        <%=data[j].event_id%> <%}%>
         <tr>
     </tbody>
     
                 <form action="/comment" method="POST" >
                     <div class="form-group">
                         <label for="name">下一次热评就是你</label>
-                    </div><div>
+                    </div>
+                    <div>
+                          <input type="hidden" name="comm_id" class="comm_id" value="<%=data[0].event_id%>"  placeholder="id"  />
+                    </div>
+                    <div>
+                      
                         <textarea class="form-control" rows="3" placeholder="写下您的评论...." name="comment"></textarea>
                     </div>
                      <!-- <button id="submit" type="submit" onclick="comment()" style="float: right;">评论</button> -->

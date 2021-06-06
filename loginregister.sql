@@ -11,7 +11,7 @@
  Target Server Version : 80024
  File Encoding         : 65001
 
- Date: 05/06/2021 21:52:33
+ Date: 06/06/2021 21:43:21
 */
 
 SET NAMES utf8mb4;
@@ -56,11 +56,6 @@ INSERT INTO `tab_comment` VALUES (2, 'kinjaz是我们的信仰', 'ys', '2021-06-
 INSERT INTO `tab_comment` VALUES (3, '无论是控制还是爆发，都是一流的', 'hch', '2021-06-03 18:53:55', 2);
 INSERT INTO `tab_comment` VALUES (4, '无论是爆发还是控制，都是一流的水平', 'hch', '2021-06-03 18:53:57', 1);
 INSERT INTO `tab_comment` VALUES (5, 'how you manage musicality, choreography, cinematography, just incredible and such a joy to watch.', 'hch', '2021-06-03 18:54:14', 1);
-INSERT INTO `tab_comment` VALUES (6, '发放', NULL, '2021-06-04 09:48:00', NULL);
-INSERT INTO `tab_comment` VALUES (7, '发放', NULL, '2021-06-04 09:49:00', NULL);
-INSERT INTO `tab_comment` VALUES (8, '6666', NULL, '2021-06-04 09:50:00', NULL);
-INSERT INTO `tab_comment` VALUES (9, '6666666666666666666666666', NULL, '2021-06-04 09:51:00', NULL);
-INSERT INTO `tab_comment` VALUES (10, 'bfbvcbs', NULL, '2021-06-04 09:53:00', NULL);
 
 -- ----------------------------
 -- Table structure for tab_event

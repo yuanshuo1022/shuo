@@ -5,7 +5,7 @@ var sd =require('silly-datetime');
 // const { render } = require('ejs');
 // const { event } = require('jquery');
 const crypto = require('crypto');
-const hash = crypto.createHash('md5');
+
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -48,6 +48,7 @@ router.get('/loginback.html', function(req, res, next) {
     
     let passwordBack=req.body.passwordBack;
     let AccountBack=req.body.AccountBack ;
+    const hash = crypto.createHash('md5');
     hash.update(passwordBack);
    passwordBack=hash.digest('hex')
     
