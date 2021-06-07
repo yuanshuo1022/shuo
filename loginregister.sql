@@ -11,7 +11,7 @@
  Target Server Version : 80024
  File Encoding         : 65001
 
- Date: 06/06/2021 21:43:21
+ Date: 07/06/2021 23:48:39
 */
 
 SET NAMES utf8mb4;
@@ -46,7 +46,7 @@ CREATE TABLE `tab_comment`  (
   `comment_date` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `comment_typeid` int(0) NULL DEFAULT NULL,
   PRIMARY KEY (`comment_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_comment
@@ -56,6 +56,16 @@ INSERT INTO `tab_comment` VALUES (2, 'kinjaz是我们的信仰', 'ys', '2021-06-
 INSERT INTO `tab_comment` VALUES (3, '无论是控制还是爆发，都是一流的', 'hch', '2021-06-03 18:53:55', 2);
 INSERT INTO `tab_comment` VALUES (4, '无论是爆发还是控制，都是一流的水平', 'hch', '2021-06-03 18:53:57', 1);
 INSERT INTO `tab_comment` VALUES (5, 'how you manage musicality, choreography, cinematography, just incredible and such a joy to watch.', 'hch', '2021-06-03 18:54:14', 1);
+INSERT INTO `tab_comment` VALUES (17, '他们是实力派', NULL, '2021-06-07 19:16:00', 1);
+INSERT INTO `tab_comment` VALUES (18, 'kinjaz yyds ', NULL, '2021-06-07 19:36:00', 6);
+INSERT INTO `tab_comment` VALUES (19, 'mike song 的埃及手真的是绝了', NULL, '2021-06-07 19:36:00', 5);
+INSERT INTO `tab_comment` VALUES (20, 'I usually don\'t like when crews have more than 7 or 8 members because it makes them look a little messy when there are too many, but these guys are so tight. Used to be much more into watching dance videos on youtube years ago and thought it was a phase I grew out of but this just reminded me what I loved about it. Nice', NULL, '2021-06-07 19:52:00', 3);
+INSERT INTO `tab_comment` VALUES (21, 'Kinjaz been dancing with masks on and everyone now complaining they cant breathe..Sit down, be humble!', NULL, '2021-06-07 19:52:00', 4);
+INSERT INTO `tab_comment` VALUES (22, 'how you manage musicality, choreography, cinematography, just incredible and such a joy to watch', NULL, '2021-06-07 20:02:00', 4);
+INSERT INTO `tab_comment` VALUES (23, '十点半', NULL, '2021-06-07 20:03:00', 2);
+INSERT INTO `tab_comment` VALUES (24, '什么鬼', NULL, '2021-06-07 20:03:00', 6);
+INSERT INTO `tab_comment` VALUES (25, 'keone一战成神', NULL, '2021-06-07 20:17:00', 3);
+INSERT INTO `tab_comment` VALUES (26, 'kenoe和mari真的是天作之合，希望他们白头到老\r\n', NULL, '2021-06-07 22:05:00', 3);
 
 -- ----------------------------
 -- Table structure for tab_event
@@ -72,18 +82,18 @@ CREATE TABLE `tab_event`  (
   `event_comment` bigint(0) NULL DEFAULT NULL,
   `event_tumb` bigint(0) NULL DEFAULT NULL,
   PRIMARY KEY (`event_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_event
 -- ----------------------------
-INSERT INTO `tab_event` VALUES (1, 'kinjaz举办舞朝竞技赛', '赛事活动', 'kinjaz官网', '2020-04-23 08:35:00', 'Arena舞朝竞技场全球齐舞大赛是由成都舞邦、美国驻成都总领事馆以及美国 Kinjaz联合主办亚洲较大齐舞比赛，几十个舞蹈团队和全球专业的裁判阵容，已成为海内外知名度前瞻的潮流舞蹈比赛', 'images/g1.jpg', 99, 99);
-INSERT INTO `tab_event` VALUES (2, 'kinjaz和假面舞团一较高下', '赛事活动', 'ABDC', '2021-03-09 15:31:00', 'jabba偏old school， kinjaz偏la urban style。jabba更佳商业化，知名度更高，粉丝更多，历史更久。kinjaz 2010 成立，参加了abdc后知名度活跃度提升，逐渐有超越jabba的趋势。', 'images/g2.jpg', 99, 34);
-INSERT INTO `tab_event` VALUES (3, 'kinjaz获新成员keone', '赛事活动', 'ABDC', '2019-06-22 10:22:00', 'KEONE & MARI 夫妇是URBAN DANCE的代表，他们的每一个作品都有要表达的思想，舞蹈承载着他们的灵魂和故事,加入kinjaz将继续续写他们的舞蹈神话，今晚BETTA WATCH YO SELF将炸裂出场', 'images/g3.jpg', 77, 23);
-INSERT INTO `tab_event` VALUES (4, 'kinjaz将和鹿晗一起演出', '公司活动', 'kinjaz公司', '2021-06-02 16:25:00', 'kinjaz将和鹿晗一起参加双十一的演唱会，蒙面舞即将炸裂全场', 'images/g4.jpg', 32, 32);
-INSERT INTO `tab_event` VALUES (5, 'Mike Song极致编舞“Tuesday”', '娱乐活动', 'kinjaz成员', '2021-06-02 16:26:00', '这个特别的表演在我们心中有着真正的分量。能够和我们大多数的兄弟们分享这个舞台一直是一种享受，而洛杉矶竞技场将永远使这成为可能。', 'images/g5.jpg', 54, 90);
-INSERT INTO `tab_event` VALUES (6, 'Anthony Lee & Bailey Sok合作编舞', '娱乐活动', 'kinjaz成员', '2021-06-02 16:28:00', '我们邀请了一些朋友和家人参加一个私人展示，庆祝我们在Kinjaz Komplex的最后时刻。我们决定在搬家前几天举办这个展览，但是在我们团队和朋友的帮助下，我们在不到一周的时间里就把这个活动办好了。', 'images/g6.jpg', 99999, 9999);
-INSERT INTO `tab_event` VALUES (7, 'Mike Song & Jason Lin抒情编舞\"Clouds\"', '娱乐活动', 'kinjaz成员', '2021-06-02 16:29:00', '你们都在自己的元素中，从音乐，身体控制，运动精神，摄影工作，节拍，在这个视频中的一切都是完美的', 'images/g7.jpg', 21, 2121);
+INSERT INTO `tab_event` VALUES (1, 'kinjaz举办舞朝竞技赛', '赛事活动', 'kinjaz官网', '2020-04-23 08:35:00', 'Arena舞朝竞技场全球齐舞大赛是由成都舞邦、美国驻成都总领事馆以及美国 Kinjaz联合主办亚洲较大齐舞比赛，几十个舞蹈团队和全球专业的裁判阵容，已成为海内外知名度前瞻的潮流舞蹈比赛', 'images/g1.jpg', 5, 99);
+INSERT INTO `tab_event` VALUES (2, 'kinjaz和假面舞团一较高下', '赛事活动', 'ABDC', '2021-03-09 15:31:00', 'jabba偏old school， kinjaz偏la urban style。jabba更佳商业化，知名度更高，粉丝更多，历史更久。kinjaz 2010 成立，参加了abdc后知名度活跃度提升，逐渐有超越jabba的趋势。', 'images/g2.jpg', 2, 34);
+INSERT INTO `tab_event` VALUES (3, 'kinjaz获新成员keone', '赛事活动', 'ABDC', '2019-06-22 10:22:00', 'KEONE & MARI 夫妇是URBAN DANCE的代表，他们的每一个作品都有要表达的思想，舞蹈承载着他们的灵魂和故事,加入kinjaz将继续续写他们的舞蹈神话，今晚BETTA WATCH YO SELF将炸裂出场', 'images/g3.jpg', 3, 23);
+INSERT INTO `tab_event` VALUES (4, 'kinjaz将和鹿晗一起演出', '公司活动', 'kinjaz公司', '2021-06-02 16:25:00', 'kinjaz将和鹿晗一起参加双十一的演唱会，蒙面舞即将炸裂全场', 'images/g4.jpg', 2, 32);
+INSERT INTO `tab_event` VALUES (5, 'Mike Song极致编舞“Tuesday”', '娱乐活动', 'kinjaz成员', '2021-06-02 16:26:00', '这个特别的表演在我们心中有着真正的分量。能够和我们大多数的兄弟们分享这个舞台一直是一种享受，而洛杉矶竞技场将永远使这成为可能。', 'images/g5.jpg', 5, 90);
+INSERT INTO `tab_event` VALUES (6, 'Anthony Lee & Bailey Sok合作编舞', '娱乐活动', 'kinjaz成员', '2021-06-02 16:28:00', '我们邀请了一些朋友和家人参加一个私人展示，庆祝我们在Kinjaz Komplex的最后时刻。我们决定在搬家前几天举办这个展览，但是在我们团队和朋友的帮助下，我们在不到一周的时间里就把这个活动办好了。', 'images/g6.jpg', 6, 9999);
+INSERT INTO `tab_event` VALUES (7, 'Mike Song & Jason Lin抒情编舞\"Clouds\"', '娱乐活动', 'kinjaz成员', '2021-06-02 16:29:00', '你们都在自己的元素中，从音乐，身体控制，运动精神，摄影工作，节拍，在这个视频中的一切都是完美的', 'images/g7.jpg', 0, 2121);
 
 -- ----------------------------
 -- Table structure for tab_indicator
@@ -98,7 +108,7 @@ CREATE TABLE `tab_indicator`  (
   PRIMARY KEY (`indicator_id`) USING BTREE,
   INDEX `viewImg`(`views_id`) USING BTREE,
   CONSTRAINT `viewImg` FOREIGN KEY (`views_id`) REFERENCES `tab_views` (`view_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_indicator
@@ -136,7 +146,7 @@ CREATE TABLE `tab_user`  (
   `user_phoneNO` bigint(0) NOT NULL,
   `user_email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   PRIMARY KEY (`users_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_user
@@ -159,7 +169,7 @@ CREATE TABLE `tab_views`  (
   `view_tags` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `view_kind` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`view_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tab_views
@@ -175,5 +185,29 @@ INSERT INTO `tab_views` VALUES (8, 'images/g8.jpg', 'xjf', '2021-05-11 09:19:28'
 INSERT INTO `tab_views` VALUES (9, 'images/t1.jpg', 'hls', '2021-05-29 09:20:05', '海伦斯', '酒吧');
 INSERT INTO `tab_views` VALUES (10, 'images/t2.jpg', 'xhj', '2021-06-05 09:21:00', '健美操', '体操');
 INSERT INTO `tab_views` VALUES (11, 'images/t3.jpg', 'xyj', '2021-05-14 09:21:38', '专业拔草', '自然');
+
+-- ----------------------------
+-- Triggers structure for table tab_comment
+-- ----------------------------
+DROP TRIGGER IF EXISTS `tri_commentAdd`;
+delimiter ;;
+CREATE TRIGGER `tri_commentAdd` AFTER INSERT ON `tab_comment` FOR EACH ROW BEGIN
+    
+     UPDATE tab_event,tab_comment set event_comment=event_comment+1 where tab_event.event_id = new.comment_typeid ;
+ END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Triggers structure for table tab_comment
+-- ----------------------------
+DROP TRIGGER IF EXISTS `tri_commentDel`;
+delimiter ;;
+CREATE TRIGGER `tri_commentDel` AFTER DELETE ON `tab_comment` FOR EACH ROW BEGIN
+    
+     UPDATE tab_event,tab_comment set event_comment= event_comment-1 where tab_event.event_id = old.comment_typeid;
+ END
+;;
+delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;

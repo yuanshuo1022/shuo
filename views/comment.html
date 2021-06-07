@@ -28,6 +28,20 @@
 	<!--//fonts-->
 </head>
 <body>
+    <div class="collapse navbar-collapse cl-effect-13" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/index" class="active scroll">首页</a>
+            </li>
+           
+            <li>
+                <a href="/information" class="register-tis">资讯</a>
+            </li>
+          
+        </ul>
+                
+    </div>
     <div class="events" id="events" >
 		<div class="container">
 			<h3 class="w3layouts-heading">全部
@@ -38,7 +52,7 @@
             <% for(var j=0;j<data.length;j++){ %>
         <td>昵称：<%=data[j].comment_user%> </td>
         <td>评论时间：<%=data[j].comment_date%><input class="form-control" type="text" value="<%=data[j].comment%>" readonly></td>
-        <%=data[j].event_id%> <%}%>
+        <%}%>
         <tr>
     </tbody>
     
