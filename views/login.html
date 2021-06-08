@@ -11,9 +11,9 @@
 <body>
 
 <div class="login-container">
-	<h1>kinjaz-Arena大赛VIP登录</h1>
+	<h1>kinjaz·fans·login</h1>
 	
-	
+	<h1 style="color: rgb(6, 237, 245);"><%= error %></h1>
 	<form action="/login" method="post" id="loginForm">
 		<div>
 			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
@@ -21,6 +21,7 @@
 		<div>
 			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
+		
 		<button id="submit" type="submit" onclick="login()">登 录</button>
 	</form>
 

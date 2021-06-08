@@ -23,6 +23,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/:id',function(req,res){
+  user=req.session.user;
    connection.query("select * from tab_event LEFT JOIN tab_comment on tab_event.event_id=tab_comment.comment_typeid where tab_event.event_id = "+req.params.id+" union SELECT * from tab_event RIGHT JOIN tab_comment on tab_event.event_id=tab_comment.comment_typeid  where  tab_event.event_id = "+req.params.id+"",function(err,result){
     if (err) {
       res.end('获取评论失败：' + err);
@@ -33,9 +34,10 @@ router.get('/:id',function(req,res){
   });
 router.post('/',function(req,res){
   var comment=req.body.comment
+  user=req.session.user;
   var c_date=sd.format(new Date(),'YYYY-MM-DD HH:mm');
 var comm_id=req.body.comm_id
-    connection.query("insert into tab_comment(comment_typeid,comment,comment_date) values(?,?,?)",[comm_id,comment,c_date],function(err,result){
+    connection.query("insert into tab_comment(comment_typeid,comment_user,comment,comment_date) values(?,?,?,?)",[comm_id,user,comment,c_date],function(err,result){
       if (err) {
         res.end('评论失败：' + err);
     } else {

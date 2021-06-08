@@ -23,36 +23,25 @@ router.get('/loginback.html', function(req, res, next) {
     res.render('article-add.html');
   });
   router.get('/article-list.html', function(req, res, next) {
-   
-    connection.query('select event_id,event_title,event_kind,event_cource,event_date from tab_event',function(err,rs){
+    AccountBack=req.session.AccoutBack;
+    connection.query('select event_id,event_title,event_kind,event_cource,event_date,event_comment from tab_event',function(err,rs){
       if(err){
        res.send("查询出错了",err)
       }else{
         res.render('article-list',{datas:rs});
+        return 0;
       }
      
     })
     
   });
-  router.get('/indexBack.html', function(req, res, next) {
-    res.render('indexBack.html');
-    res.send(str);
-  });
-  router.get('/loginback.html', function(req, res, next) {
-    res.render('loginback.html');
-  });
- 
-
-  //POST
+  //资讯页面post请求
   router.post('/loginback.html',function(req,res){
-    
     let passwordBack=req.body.passwordBack;
     let AccountBack=req.body.AccountBack ;
     const hash = crypto.createHash('md5');
     hash.update(passwordBack);
    passwordBack=hash.digest('hex')
-    
-   
    var secherAdminSql='select * from tab_admin where  Admin_account=';
    var passSql='and Admin_password =';
    var namewordQuer=connection.escape(AccountBack);
@@ -60,21 +49,36 @@ router.get('/loginback.html', function(req, res, next) {
    connection.query(secherAdminSql+namewordQuer+passSql+passwordQuer, (error, resu, fields)=> {
      if (error) {
      console.log(error);
+     return 0;
     };
-    console.log(resu[0])
-
-  
-     
+    // console.log(resu[0])
      if(resu[0]){
+      req.session.AccoutBack=AccountBack;
+      req.session.passwordBack=passwordBack
        res.json({"data":1});
+      
      }else{
       
-       console.log("账号或密码错误");
-       
+      res.json({"data":0});
+      return 0;
      }
-  
    });
  });
+
+
+  router.get('/indexBack.html', function(req, res, next) {
+    res.render('indexBack.html');
+  });
+
+
+
+  router.get('/loginback.html', function(req, res, next) {
+    res.render('loginback.html');
+  });
+ 
+
+
+  
 
  //后台新增页面
 
@@ -89,8 +93,10 @@ router.get('/loginback.html', function(req, res, next) {
  connection.query("insert into tab_event(event_title,event_kind,event_cource,event_date,event_massage) values(?,?,?,?,?)",[add_title,add_kind,add_cource,add_date,add_massage], function (err, rows) {
   if (err) {
       res.end('新增失败：' + err);
+      return 0;
   } else {
       res.redirect('/article-list.html');
+     
   }
 })
   
@@ -102,8 +108,10 @@ router.get('/article-list.html/:id', function (req, res) {
   connection.query("delete from tab_event where event_id ="+req.params.id, function (err, rows) {
     if (err) {
         res.end('删除失败：' + err);
+        return 0;
     } else {
         res.redirect('/article-list.html');
+      
     }
   })
 });
@@ -129,6 +137,7 @@ router.post('/article-list.html/update', function (req, res) {
   connection.query("update tab_event set event_title='"+add_title+"',event_kind='"+add_kind+"',event_cource='"+add_cource+"' where event_id=" + add_id+"", function (err, rows) {
       if (err) {
           res.end('修改失败：' + err);
+          return 0;
       } else {
           res.redirect('/article-list.html');
       }
@@ -138,7 +147,7 @@ router.post('/article-list.html/update', function (req, res) {
 router.post('/search', function (req, res) {
   var a_id=req.body.add_id;
   var a_title=req.body.add_title;
-  var sql = "select * from tab_event";
+  var sql = "select * from tab_event where 1=1";
  
   
   if(a_id){
@@ -149,8 +158,6 @@ router.post('/search', function (req, res) {
       sql += " and event_title like'%" + a_title + "%'";
   }
 
-  
-  a_sql = sql.replace("and","where");
   connection.query(a_sql, function (err, result) {
       if (err) {
           res.end("查询失败：", err)
