@@ -15,13 +15,80 @@ var connection = mysql.createConnection({
 });
  
 connection.connect();
+
+
+//后台登录get请求
 router.get('/loginback.html', function(req, res, next) {
   res.render('loginback.html');
 });
 
+
+//后台新增页面get请求
   router.get('/article-add.html', function(req, res, next) {
     res.render('article-add.html');
   });
+
+
+  //评论展示
+  router.get('/article-comment.html', function(req, res, next) {
+    AccountBack=req.session.AccoutBack;
+    connection.query('select * from tab_comment',function(err,result){
+      if(err){
+       res.send("查询出错了",err)
+      }else{
+        res.render('article-comment.html',{datas:result});
+        return 0;
+      }
+     
+    })
+  });
+
+
+  //删除评论
+  router.get('/article-comment.html/:id', function (req, res) {
+
+    connection.query("delete from tab_comment where comment_id ="+req.params.id, function (err, rows) {
+      if (err) {
+          res.end('删除失败：' + err);
+          return 0;
+      } else {
+          res.redirect('/article-comment.html');
+        
+      }
+    })
+  });
+
+
+  //查询评论
+  router.post('/commentSearch', function (req, res) {
+    var idKind=req.body.comm_id;
+    var c_id=req.body.c_id;
+    var commentTen=req.body.commentTen;
+    var sql = "select * from tab_comment where 1=1";
+   
+    
+    if(idKind){
+     c_sql= sql+= " and comment_typeid =" + idKind + "";
+  }
+  
+    if (c_id) {
+      c_sql=  sql += " and comment_id like'%" + c_id + "%'";
+    }
+    if (commentTen) {
+      c_sql=  sql += " and comment like'%" + commentTen + "%'";
+    }
+     
+    connection.query(c_sql, function (err, result) {
+        if (err) {
+            res.end("查询失败：", err)
+        } else {
+            res.render("article-comment.html", {datas:result,comm_id:idKind,c_id:c_id,commentTen:commentTen});
+        }
+    });
+  });
+
+
+  //资讯get请求
   router.get('/article-list.html', function(req, res, next) {
     AccountBack=req.session.AccoutBack;
     connection.query('select event_id,event_title,event_kind,event_cource,event_date,event_comment from tab_event',function(err,rs){
@@ -35,7 +102,9 @@ router.get('/loginback.html', function(req, res, next) {
     })
     
   });
-  //资讯页面post请求
+
+
+  //后台登录页面post请求
   router.post('/loginback.html',function(req,res){
     let passwordBack=req.body.passwordBack;
     let AccountBack=req.body.AccountBack ;
@@ -64,25 +133,14 @@ router.get('/loginback.html', function(req, res, next) {
      }
    });
  });
-
-
-  router.get('/indexBack.html', function(req, res, next) {
-    res.render('indexBack.html');
-  });
-
-
-
+ 
   router.get('/loginback.html', function(req, res, next) {
     res.render('loginback.html');
   });
  
 
-
-  
-
  //后台新增页面
-
- router.post('/article-add.html', function(req, res, next) {
+router.post('/article-add.html', function(req, res, next) {
   
    var add_title=req.body.add_title;
    var add_kind=req.body.add_kind;
@@ -102,7 +160,8 @@ router.get('/loginback.html', function(req, res, next) {
   
 });
 
-//删除
+
+//资讯删除
 router.get('/article-list.html/:id', function (req, res) {
 
   connection.query("delete from tab_event where event_id ="+req.params.id, function (err, rows) {
@@ -115,10 +174,10 @@ router.get('/article-list.html/:id', function (req, res) {
     }
   })
 });
-//修改
-router.get('/article-list.html/Update/:id', function (req, res) {
- 
 
+
+//资讯修改
+router.get('/article-list.html/Update/:id', function (req, res) {
   connection.query("select * from tab_event where event_id=" + req.params.id, function (err, result) {
       if (err) {
           res.end('修改页面跳转失败：' + err);
@@ -143,7 +202,9 @@ router.post('/article-list.html/update', function (req, res) {
       }
   });
 });
-//查询
+
+
+//资讯查询
 router.post('/search', function (req, res) {
   var a_id=req.body.add_id;
   var a_title=req.body.add_title;
@@ -151,13 +212,13 @@ router.post('/search', function (req, res) {
  
   
   if(a_id){
-   sql+= " and event_id =" + a_id + "";
+   a_sql= sql+= " and event_id =" + a_id + "";
 }
 
   if (a_title) {
-      sql += " and event_title like'%" + a_title + "%'";
+    a_sql=  sql += " and event_title like'%" + a_title + "%'";
   }
-
+   
   connection.query(a_sql, function (err, result) {
       if (err) {
           res.end("查询失败：", err)
@@ -166,4 +227,6 @@ router.post('/search', function (req, res) {
       }
   });
 });
+
+
 module.exports = router;

@@ -56,7 +56,7 @@ app.use(function(req, res, next){
        
 
 app.use(function (req, res, next) {
-  if (req.session.user&&req.session.user!=undefined&&req.originalUrl!="/imgUpdate.html"&&req.originalUrl!="/indexBack.html"&&req.originalUrl!="/picture-add.html"&&req.originalUrl!="/picture-list.html"&&req.originalUrl!="/pixture-show"&&req.originalUrl!="/article-add.html"&&req.originalUrl!="/article-list.html") {  // 判断用户是否登录
+  if (req.session.user&&req.session.user!=undefined&&req.originalUrl!="/imgUpdate.html"&&req.originalUrl!="/indexBack.html"&&req.originalUrl!="/picture-add.html"&&req.originalUrl!="/picture-list.html"&&req.originalUrl!="/pixture-show"&&req.originalUrl!="/article-add.html"&&req.originalUrl!="/article-list.html"&&req.originalUrl!="/article-comment.html") {  // 判断用户是否登录
     next();
   } else if(req.session.AccoutBack&&req.session.AccoutBack!=undefined){
     next();

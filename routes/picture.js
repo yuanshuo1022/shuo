@@ -8,10 +8,9 @@ var connection = mysql.createConnection({
     password : 'ys3285739',
     database : 'loginregister'
   });
-   
   connection.connect();
 
-
+//图片展示
 router.get('/picture-list.html', function(req, res, next) {
     connection.query('select * from tab_views',function(err,result){
         if(err){
@@ -30,6 +29,8 @@ router.get('/picture-list.html', function(req, res, next) {
   router.get('/picture-add.html', function(req, res, next) {
     res.render('picture-add.html');
   });
+
+
   //新增图片
   router.post('/picture-add.html', function(req, res, next) {
     var p_kind =req.body.p_kind;
@@ -46,7 +47,9 @@ router.get('/picture-list.html', function(req, res, next) {
    }
  })
    
-  })
+  });
+
+
 //删除图片
 router.get('/picture-list.html/:id', function (req, res) {
 
@@ -58,9 +61,10 @@ router.get('/picture-list.html/:id', function (req, res) {
       }
     })
   });
+
+
 // 修改图片
 router.get('/picture-list.html/imgUpdate/:id', function (req, res) {
- 
 
     connection.query("select * from tab_views where view_id=" + req.params.id, function (err, result) {
         if (err) {
@@ -86,6 +90,8 @@ router.get('/picture-list.html/imgUpdate/:id', function (req, res) {
         }
     });
   });
+
+  
 //查询图片
 router.post('/imgSearch', function (req, res) {
     var S_id=req.body.search_id;

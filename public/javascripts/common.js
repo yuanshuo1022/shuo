@@ -27,7 +27,9 @@ function loginback(){
         data:databack,
         success: function(data){
 			if(data.data == 1){
-				window.location = "/indexback.html"
+				window.location = "/article-list.html"
+			}else{
+				window.location="/error"
 			}
 		},
         

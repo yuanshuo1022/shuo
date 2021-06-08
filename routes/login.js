@@ -12,12 +12,15 @@ var connection = mysql.createConnection({
 });
  
 connection.connect();
-/* GET home page. */
+/*
+ * 前端登录
+*/
 router.get('/', function(req, res, next) {
   res.render('login');
   // next();
 });
 
+//前台登录post请求
 router.post('/',function(req,res){
    let username=req.body.username;
    let password=req.body.password;

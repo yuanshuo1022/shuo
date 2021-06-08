@@ -150,11 +150,11 @@ label {
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
     color: #fff;
-    background-color: #EB4549;
+    background-color: #1e5dd1;
 }
 
 a.active.scroll {
-    color: #e00231 !important;
+    color: #2694ee !important;
     text-shadow: 1px 1px #000;
 }
 
