@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 connection.connect();
 router.get('/information',function(req,res){
   user=req.session.user;
-  connection.query('select * from tab_event LEFT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id union SELECT * from tab_event RIGHT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id ',function(err,result){
+  connection.query('select * from tab_event LEFT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id union SELECT * from tab_event RIGHT JOIN tab_comment on tab_event.event_id=tab_comment.comment_id  ',function(err,result){
     if(err){
      res.send("页面展示失败",err)
     }else{
